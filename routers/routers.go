@@ -1,11 +1,3 @@
-/**********************************************
-** @Des: 路由
-** @Author: haodaquan
-** @Date:   2017-10-13 10:58:26
-** @Last Modified by:   haodaquan
-** @Last Modified time: 2017-10-18 10:59:35
-***********************************************/
-
 package routers
 
 import (
@@ -26,9 +18,22 @@ func InitRouter() *gin.Engine {
 	v0 := router.Group("/v0")
 	v0.Use(middlewares.Auth())
 	{
-		//新增
-		//curl -X POST http://127.0.0.1:8000/v0/member -d "login_name=hell31&password=g2223"
+
+		/**
+		* @api GET /member
+		* @apiExample json
+		* { "id":1, "name":"admin" }
+		 */
 		v0.POST("/member", apps.MemberAdd)
+		/**
+		 * @api GET /users/:id 获取指定用户的相关信息
+		 * @apiGroup users
+		 * @apiParam id int 表示用户 id 的唯一值
+		 *
+		 * @apiSuccess 200 json ok
+		 * @apiExample
+		 * {"id":1, "name": "n1"}
+		 */
 		// curl -X GET http://127.0.0.1:8000/v0/member
 		v0.GET("/member", apps.MemberList)
 		// curl -X GET http://127.0.0.1:8000/v0/member/1
