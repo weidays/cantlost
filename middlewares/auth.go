@@ -1,10 +1,3 @@
-/**********************************************
-** @Des: 权限检查
-** @Author: haodaquan
-** @Date:   2017-10-16 21:49:31
-** @Last Modified by:   haodaquan
-** @Last Modified time: 2017-10-18 09:47:11
-***********************************************/
 package middlewares
 
 import (

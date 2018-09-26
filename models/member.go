@@ -2,12 +2,21 @@ package models
 
 import (
 	db "projects/cantlost/dbs"
+	"time"
 )
 
 type Member struct {
-	ID        int    `json:"id" form:"id"`
-	LoginName string `json:"login_name" form:"login_name"`
-	Password  string `json:"password" form:"password"`
+	ID          int `json:"id" form:"id"`
+	RegistedAt  *time.Time
+	UpdatedAt   *time.Time
+	PicURL      string
+	NickName    string
+	RealName    string
+	PhoneNumber string
+	Gender      string
+	BirthDay    *time.Time
+	LoginName   string `json:"login_name" form:"login_name"`
+	Password    string `json:"password" form:"password"`
 }
 
 func (m *Member) CreateTable() {

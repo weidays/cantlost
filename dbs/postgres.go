@@ -1,10 +1,3 @@
-/**********************************************
-** @Des: This file ...
-** @Author: haodaquan
-** @Date:   2017-10-13 21:09:02
-** @Last Modified by:   haodaquan
-** @Last Modified time: 2017-10-18 09:40:39
-***********************************************/
 package dbs
 
 import (

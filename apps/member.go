@@ -1,10 +1,3 @@
-/**********************************************
-** @Des: This file ...
-** @Author: haodaquan
-** @Date:   2017-10-13 13:47:59
-** @Last Modified by:   haodaquan
-** @Last Modified time: 2017-10-17 17:06:46
-***********************************************/
 package apps
 
 import (
