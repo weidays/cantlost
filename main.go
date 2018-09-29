@@ -18,7 +18,6 @@ func main() {
 }
 
 func initTabel() {
-	member := &models.Member{}
-	db.PGMaster.CreateTable(member)
-
+	db.PGMaster.AutoMigrate(&models.Member{})
+	db.PGMaster.AutoMigrate(&models.LostInfo{})
 }

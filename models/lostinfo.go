@@ -28,6 +28,17 @@ func (m *LostInfo) AddLostInfo() (id int64, err error) {
 	return
 }
 
+func ListLostInfo(page, pageSize int, filters ...interface{}) (lists []LostInfo, count int64, err error) {
+	db.PGMaster.Model(&LostInfo{}).Limit(pageSize).Offset((page - 1) * pageSize).Scan(&lists)
+	count = (int64)(len(lists))
+	return
+}
+
+func OneLostInfo(id int) (m LostInfo, err error) {
+	db.PGMaster.Where("id = ?", id).First(m)
+	return
+}
+
 func (m *LostInfo) UpdateLostInfo(id int) (n int64, err error) {
 	return
 }
