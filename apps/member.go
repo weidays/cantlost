@@ -52,7 +52,7 @@ func MemberList(c *gin.Context) {
 func MemberGet(c *gin.Context) {
 	mid, _ := strconv.Atoi(c.Param("id"))
 
-	mem, err := models.OneMember(mid)
+	mem, err := models.OneMember(int64(mid))
 	fmt.Println(mem, err)
 	if err != nil {
 		c.JSON(http.StatusExpectationFailed, gin.H{
@@ -116,7 +116,6 @@ func MemberAdd(c *gin.Context) {
 			"data":    m,
 		})
 	}
-
 }
 
 //删除

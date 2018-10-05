@@ -20,4 +20,7 @@ func main() {
 func initTabel() {
 	db.PGMaster.AutoMigrate(&models.Member{})
 	db.PGMaster.AutoMigrate(&models.LostInfo{})
+	db.PGMaster.AutoMigrate(&models.Category{})
+	db.PGMaster.AutoMigrate(&models.Target{})
+	db.PGMaster.AutoMigrate(&models.TargetOtherInfo{})
 }

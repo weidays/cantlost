@@ -29,27 +29,27 @@ func InitRouter() *gin.Engine {
 	// curl -X DELETE http://127.0.0.1:8000/v0/member/2
 	v0.DELETE("/member/:id", apps.MemberDelete)
 	/**
-		* @api POST http://aip.fixme.vip/v0/lostinfo
-		* @apiGroup lostinfo
-		* @apiParam page int 第几页
-		* @apiParam page_size int 每页条数
-		* @apiParam category_id  int 分类id
-		* @apiExample 请求示例
-		* {
-		  "page": 1,
-		  "page_size": 15,
-		  "category_id": 18
-		}
-		* @apiExample 返回数据示例
-		* {
+			* @api POST http://aip.fixme.vip/v0/lostinfo
+			* @apiGroup lostinfo
+			* @apiParam page int 第几页
+			* @apiParam page_size int 每页条数
+			* @apiParam category_id  int 分类id
+			* @apiExample 请求示例
+			* {
+			  "page": 1,
+			  "page_size": 15,
+			  "category_id": 18
+			}
+			* @apiExample 返回数据示例
+			* {
 	    "count": 1,
 	    "current:": 1,
 	    "data": [
 	        {
-	            "id": 0,
-	            "publish_at": null,
-	            "updated_at": null,
-	            "user_id": 0,
+	            "id": 1,
+	            "publish_at": "2018-09-30T08:14:56.118+07:00",
+	            "updated_at": "2018-09-30T08:14:58.463+07:00",
+	            "member_id": 1,
 	            "member_info": {
 	                "id": 1,
 	                "registed_at": "2018-09-30T08:09:57.018+07:00",
@@ -63,14 +63,23 @@ func InitRouter() *gin.Engine {
 	                "login_name": "weidays",
 	                "password": "goodboy"
 	            },
+	            "category_id": 1,
 	            "category_info": null,
-	            "category_id": 0,
-	            "title": "",
-	            "content": "",
-	            "like_num": 0,
-	            "dislike_num": 0,
-	            "comment_num": 0,
-	            "share_num": 0
+	            "title": "非常牛逼的一个故事",
+	            "cover_pics": "",
+	            "lost_time": null,
+	            "lost_place_str": "",
+	            "lost_place_lon": "",
+	            "lost_place_lat": "",
+	            "target_id": 0,
+	            "target_info": null,
+	            "lost_event": "",
+	            "target_stroy": "",
+	            "the_end": "",
+	            "like_num": 199,
+	            "dislike_num": 299,
+	            "comment_num": 99,
+	            "share_num": 98
 	        }
 	    ],
 	    "message": "SUCCESS",
@@ -79,6 +88,8 @@ func InitRouter() *gin.Engine {
 	}
 	*/
 	v0.POST("/lostinfo", apps.LostInfoList)
+
+	v0.POST("/publish_lostinfo", apps.LostInfoAdd)
 
 	return router
 }

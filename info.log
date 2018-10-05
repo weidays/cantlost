@@ -1,2 +1,45 @@
 [GIN] 2018/09/25 - 10:54:53 | 200 |     908.286µs |       127.0.0.1 | POST     /v0/member?sign=ee14b34513697cd27e0e83e46b084580&ts=1508304821&app_key=1001&method=POST
 [GIN] 2018/09/25 - 10:55:02 | 200 |      75.091µs |       127.0.0.1 | GET      /v0/member?page=1&page_size=4&sign=ee14b34513697cd27e0e83e46b084580&ts=1508304821&app_key=1001&method=GET
+host=127.0.0.1 port=5432 user=weidays dbname=postgres sslmode=disable
+[GIN-debug] [WARNING] Now Gin requires Go 1.6 or later and Go 1.7 will be required soon.
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+
+[35m(pq: relation "members" already exists)[0m 
+[33m[2018-09-26 12:00:08][0m [31;1m [0m
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- default.html
+
+[GIN-debug] GET    /                         --> projects/cantlost/apps.IndexApi (3 handlers)
+[GIN-debug] POST   /v0/member                --> projects/cantlost/apps.MemberAdd (4 handlers)
+[GIN-debug] GET    /v0/member                --> projects/cantlost/apps.MemberList (4 handlers)
+[GIN-debug] GET    /v0/member/:id            --> projects/cantlost/apps.MemberGet (4 handlers)
+[GIN-debug] PUT    /v0/member/:id            --> projects/cantlost/apps.MemberEdit (4 handlers)
+[GIN-debug] DELETE /v0/member/:id            --> projects/cantlost/apps.MemberDelete (4 handlers)
+[GIN-debug] Listening and serving HTTP on :31000
+[GIN] 2018/09/26 - 12:00:20 | 200 |     148.369µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 12:00:20 | 404 |         647ns |             ::1 | GET      /favicon.ico
+[GIN] 2018/09/26 - 12:00:23 | 200 |       8.786µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 12:00:24 | 200 |      13.201µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 12:00:25 | 200 |      15.751µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 12:00:25 | 200 |      15.015µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 12:00:25 | 200 |       8.353µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:32 | 200 |      62.535µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:33 | 200 |       9.537µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:33 | 200 |      11.411µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:34 | 200 |       8.781µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:34 | 200 |       9.112µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:36 | 200 |       7.993µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:36 | 200 |       8.262µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:36 | 200 |       8.881µs |             ::1 | GET      /
+[GIN] 2018/09/26 - 22:49:36 | 200 |      10.501µs |             ::1 | GET      /
+host=127.0.0.1 port=5432 user=postgres dbname=postgres sslmode=disable
+2018/09/30 00:57:02 pq: role "postgres" does not exist

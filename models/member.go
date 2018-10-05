@@ -5,6 +5,19 @@ import (
 	"time"
 )
 
+type MemberVo struct {
+	ID          int        `json:"id"`
+	RegistedAt  *time.Time `json:"registed_at"`
+	UpdatedAt   *time.Time `json:"updated_at"`
+	PicURL      string     `json:"pic_url"`
+	NickName    string     `json:"nick_name"`
+	RealName    string     `json:"real_name"`
+	PhoneNumber string     `json:"phone_number"`
+	Gender      string     `json:"gender"`
+	BirthDay    *time.Time `json:"birthDay"`
+	LoginName   string     `json:"login_name" form:"login_name"`
+}
+
 type Member struct {
 	ID          int        `json:"id"`
 	RegistedAt  *time.Time `json:"registed_at"`
@@ -33,9 +46,12 @@ func ListMember(page, pageSize int, filters ...interface{}) (lists []Member, cou
 	return
 }
 
-func OneMember(id int) (m Member, err error) {
+func OneMember(id int64) (m Member, err error) {
 	//TODO 加入redis缓存
-	db.PGMaster.Where("id = ?", id).First(&m)
+	db.PGMaster.LogMode(true)
+	db.PGMaster.Table("members").Where("id = ?", id).First(&m)
+	// fmt.Printf("%v", m)
+	// db.PGMaster.Model(&Member{}).Where("id = ?", id).First(m)
 	return
 }
 

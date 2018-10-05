@@ -6,7 +6,6 @@ import (
 	"projects/cantlost/libs"
 
 	"projects/cantlost/models"
-	"projects/cantlost/models/vo"
 
 	"github.com/gin-gonic/gin"
 )
@@ -31,18 +30,13 @@ func LostInfoList(c *gin.Context) {
 	if requestInfo.PageSize == 0 {
 		requestInfo.PageSize = 10
 	}
-
 	list, n, err := models.ListLostInfo(requestInfo.Page, requestInfo.PageSize, filters...)
-	listvo := []vo.LostInfoVo{}
-	for _, info := range list {
-		vo := vo.LostInfoVo{}
-		libs.CopyStruct(info, vo)
-		member, err := models.OneMember(info.UserID)
+	for index, info := range list {
+		member, err := models.OneMember(info.MemberID)
 		if err != nil {
 
 		}
-		vo.MemberInfo = &member
-		listvo = append(listvo, vo)
+		list[index].MemberInfo = &member
 	}
 
 	if err != nil {
@@ -56,10 +50,35 @@ func LostInfoList(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"status":    http.StatusOK,
 			"message":   "SUCCESS",
-			"data":      listvo,
+			"data":      list,
 			"count":     n,
 			"page_size": requestInfo.PageSize,
 			"current:":  requestInfo.Page,
+		})
+	}
+}
+
+//新增
+func LostInfoAdd(c *gin.Context) {
+	form := &models.LostInfoForm{}
+	c.BindJSON(form)
+
+	lostInfo := models.LostInfo{}
+	libs.CopyStruct(form, lostInfo)
+
+	if id, err := lostInfo.AddLostInfo(); err != nil {
+		c.JSON(http.StatusExpectationFailed, gin.H{
+			"status":  http.StatusBadRequest,
+			"message": err.Error(),
+			"data":    "",
+		})
+		log.Fatal(err)
+	} else {
+		lostInfo.ID = id
+		c.JSON(http.StatusOK, gin.H{
+			"status":  http.StatusOK,
+			"message": "SUCCESS",
+			"data":    lostInfo,
 		})
 	}
 }
