@@ -21,7 +21,7 @@ func InitRouter() *gin.Engine {
 
 	v0.POST("/member", apps.MemberAdd)
 	// curl -X GET http://127.0.0.1:8000/v0/member
-	v0.GET("/member", apps.MemberList)
+	v0.GET("/members", apps.MemberList)
 	// curl -X GET http://127.0.0.1:8000/v0/member/1
 	v0.GET("/member/:id", apps.MemberGet)
 	//curl -X PUT http://127.0.0.1:8000/v0/member/1 -d "login_name=haodaquan&password=1234"
@@ -29,7 +29,7 @@ func InitRouter() *gin.Engine {
 	// curl -X DELETE http://127.0.0.1:8000/v0/member/2
 	v0.DELETE("/member/:id", apps.MemberDelete)
 	/**
-			* @api POST http://aip.fixme.vip/v0/lostinfo
+			* @api {post} /v0/lostinfo 获取丢不下列表
 			* @apiGroup lostinfo
 			* @apiParam page int 第几页
 			* @apiParam page_size int 每页条数
@@ -87,9 +87,42 @@ func InitRouter() *gin.Engine {
 	    "status": 200
 	}
 	*/
-	v0.POST("/lostinfo", apps.LostInfoList)
-
-	v0.POST("/publish_lostinfo", apps.LostInfoAdd)
+	v0.POST("/lostinfos", apps.LostInfoList)
+	/**
+	* @api {post} /v0/publish_lostinfo  发布一个丢不下
+	* @apiName checkCode
+	* @apiGroup lostinfo
+	* @apiDescription  发布一个丢不下
+	* @apiExample 请求示例
+	*{
+		"user_id":1,
+		"category_id":1,
+		"title":"真是一个好日子",
+		"cover_pics":"http://abc.orc/pic.png;http://abc.orc/pic2.png",
+		"target_info":{
+			"name":"美丽的手机",
+			"brand":"苹果",
+			"value":"89.9",
+			"get_at_str":"2018-10-08",
+			"main_color":"白色",
+			"other_color":"无",
+			"other_info":[]
+		},
+		"lost_time_str":"2018-10-08 22:04:52",
+		"lost_place_str":"成都市人民南路二段",
+		"lost_place_lon":"12.3",
+		"lost_place_lat":"234.6",
+		"lost_event":"就是在哪个阳关明媚的日子，我走过火车站的时候，哪个瓜娃子，给我偷了。",
+		"target_stroy":"十年之前，我就有了它，陪我过的每个秋冬。我的照片都在里面"
+	}
+	* @apiExample 返回示例
+	*{
+	"data": "",
+	"message": "SUCCESS",
+	"status": 200
+	}
+	*/
+	v0.POST("/lostinfo", apps.LostInfoAdd)
 
 	return router
 }

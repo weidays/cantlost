@@ -10,7 +10,7 @@ type TargetForm struct {
 	Name       string                `json:"name"`        //对象名称
 	Brand      string                `json:"brand"`       //对象品牌
 	Value      string                `json:"value"`       //当前价值
-	GetAt      *time.Time            `json:"get_at"`      //取得时间
+	GetAtStr   string                `json:"get_at_str"`  //取得时间 2018-10-09 日期格式字符串
 	MainColor  string                `json:"main_color"`  //主颜色
 	OtherColor string                `json:"other_color"` //次颜色
 	OtherInfo  []TargetOtherInfoForm `json:"other_info"`  //其他自定义特征信息
