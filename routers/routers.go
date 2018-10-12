@@ -19,6 +19,8 @@ func InitRouter() *gin.Engine {
 	v0 := router.Group("/v0")
 	v0.Use(middlewares.Auth())
 
+	v0.POST("/login", apps.MemberLogin)
+
 	v0.POST("/member", apps.MemberAdd)
 	// curl -X GET http://127.0.0.1:8000/v0/member
 	v0.GET("/members", apps.MemberList)

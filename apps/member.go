@@ -9,7 +9,33 @@ import (
 	"projects/cantlost/models"
 
 	"github.com/gin-gonic/gin"
+	"github.com/medivhzhan/weapp"
 )
+
+const (
+	appID  = "wx63abe446f9e802d7"
+	secret = "bd90beee6bf53fa77a59b8b7c7fd12f4"
+)
+
+//MemberLogin 会员登录
+func MemberLogin(c *gin.Context) {
+	code := c.Param("code")
+	// @appID 小程序 appID
+	// @secret 小程序的 app secret
+	// @code 小程序登录时获取的 code
+	res, err := weapp.Login(appID, secret, code)
+	if err != nil {
+		fmt.Println("调用微信登录失败:", err)
+	}
+
+	// res.OpenID
+	// res.SessionKey
+	// res.UnionID
+	fmt.Printf("返回结果: %#v", res)
+
+	//如果数据库中还没有这个账号，则加入
+
+}
 
 //获取列表
 func MemberList(c *gin.Context) {
