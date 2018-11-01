@@ -126,5 +126,7 @@ func InitRouter() *gin.Engine {
 	*/
 	v0.POST("/lostinfo", apps.LostInfoAdd)
 
+	v0.GET("/userArea", apps.UserArea)
+
 	return router
 }

@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
+	"projects/cantlost/libs"
 	"projects/cantlost/models"
 
 	"github.com/gin-gonic/gin"
@@ -35,6 +36,34 @@ func MemberLogin(c *gin.Context) {
 
 	//如果数据库中还没有这个账号，则加入
 
+}
+
+func UserArea(c *gin.Context) {
+	lat := c.Param("lat")
+	lng := c.Param("lng")
+	//http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=010
+
+	req := &libs.RequestObject{}
+	req.URL = "http://gc.ditu.aliyun.com/regeocoding?l=" + lat + "," + lng + "&type=010"
+	err := req.Do()
+	if err != nil {
+		c.JSON(http.StatusExpectationFailed, gin.H{
+			"status":  http.StatusExpectationFailed,
+			"message": "获取当前位置失败，请手动选择",
+			"data":    "",
+		})
+		return
+	}
+	resp := req.Response
+	if resp != nil {
+		data := resp.Data
+		c.JSON(http.StatusExpectationFailed, gin.H{
+			"status":  http.StatusOK,
+			"message": "获取成功",
+			"data":    data,
+		})
+
+	}
 }
 
 //获取列表

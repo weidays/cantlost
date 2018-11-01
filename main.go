@@ -23,4 +23,5 @@ func initTabel() {
 	db.PGMaster.AutoMigrate(&models.Category{})
 	db.PGMaster.AutoMigrate(&models.Target{})
 	db.PGMaster.AutoMigrate(&models.TargetOtherInfo{})
+	db.PGMaster.AutoMigrate(&models.Area{})
 }
